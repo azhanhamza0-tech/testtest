@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مەرزە موڤیز | Merze Movies - سەکۆی فیلم و زنجیرەی کوردی</title>
+  <meta name="description" content="مەرزە موڤیز (Merze Movies) پێشکەوتووترین سەکۆی ستریمینگی کوردییە بۆ تەماشاکردنی نوێترین فیلم و زنجیرە جیهانی و کوردییەکان بە کوالیتی بەرز و ژێرنووس و دوبلاژ.">
+  <meta name="keywords" content="Merze Movies, مەرزە موڤیز, فیلمی کوردی, زنجیرەی کوردی, ستریمینگ, سینەمای کوردی, دوبلاژ, ژێرنووس">
+  <meta property="og:title" content="مەرزە موڤیز | Merze Movies">
+  <meta property="og:description" content="سەکۆی سینەمایی فیلم و زنجیرەی کوردی بە کوالیتی Full HD و VIP">
+  <meta property="og:type" content="website">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- SVG Gradients -->
+  <svg width="0" height="0" style="position:absolute;">
+    <defs>
+      <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#8b5cf6" />
+        <stop offset="50%" stop-color="#3b82f6" />
+        <stop offset="100%" stop-color="#ec4899" />
+      </linearGradient>
+    </defs>
+  </svg>
+</head>
+<body>
+
+  <!-- ======================================================================
+       HEADER / NAVBAR
+       ====================================================================== -->
+  <header class="navbar">
+    <div class="nav-container">
+      <!-- Brand Logo -->
+      <a href="#home" class="brand-logo" onclick="MerzeApp.navigate('home')">
+        <div class="logo-symbol">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 6.47v11.06c0 1.55 1.69 2.5 3.02 1.71l9.4-5.53c1.31-.77 1.31-2.65 0-3.42l-9.4-5.53C5.69 3.97 4 4.92 4 6.47z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">MERZE MOVIES</span>
+          <span class="brand-subtitle">مەرزە موڤیز • ستریمینگی کوردی</span>
+        </div>
+      </a>
+
+      <!-- Nav Links -->
+      <ul class="nav-links">
+        <li>
+          <a href="#home" class="nav-link active" data-route="home" onclick="MerzeApp.navigate('home')">
+            سەرەکی
+          </a>
+        </li>
+        <li>
+          <a href="#movies" class="nav-link" data-route="movies" onclick="MerzeApp.navigate('search')">
+            فیلمەکان
+          </a>
+        </li>
+        <li>
+          <a href="#series" class="nav-link" data-route="series" onclick="MerzeApp.navigate('search')">
+            زنجیرەکان
+          </a>
+        </li>
+        <li>
+          <a href="#vip" class="nav-link vip-link" data-route="vip" onclick="MerzeApp.navigate('vip')">
+            👑 بەشداریکردنی VIP
+          </a>
+        </li>
+        <li>
+          <a href="#search" class="nav-link" data-route="search" onclick="MerzeApp.navigate('search')">
+            گەڕان
+          </a>
+        </li>
+      </ul>
+
+      <!-- Nav Actions (Search, Theme, Auth) -->
+      <div class="nav-actions">
+        <!-- Live Search Input -->
+        <div class="nav-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="nav-search-input" placeholder="گەڕانی خێرا..." autocomplete="off">
+          <div id="nav-search-dropdown" class="search-dropdown"></div>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button class="theme-toggle-btn" onclick="MerzeApp.toggleTheme()" title="گۆڕینی دۆخی ڕەنگ (تاریک / ڕووناک)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </button>
+
+        <!-- User Authentication Area -->
+        <div id="nav-user-area"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       MAIN DYNAMIC VIEW
+       ====================================================================== -->
+  <main id="main-view" style="flex-grow: 1;">
+    <div style="min-height: 70vh; display:flex; align-items:center; justify-content:center;">
+      <div style="color:var(--text-secondary); font-size:1.1rem;">چاوەڕوانبە، مەرزە موڤیز لە ئامادەکاریدایە...</div>
+    </div>
+  </main>
+
+  <!-- ======================================================================
+       FOOTER
+       ====================================================================== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <div class="brand-logo" onclick="MerzeApp.navigate('home')">
+            <div class="logo-symbol">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 6.47v11.06c0 1.55 1.69 2.5 3.02 1.71l9.4-5.53c1.31-.77 1.31-2.65 0-3.42l-9.4-5.53C5.69 3.97 4 4.92 4 6.47z"/>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <span class="brand-name">MERZE MOVIES</span>
+              <span class="brand-subtitle">مەرزە موڤیز</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            پێشکەوتووترین و شازترین سەکۆی سینەمایی لە کوردستان بۆ سەیرکردنی فیلم و زنجیرە جیهانییەکان بە کوالیتی سەرسوڕهێنەر و دەنگی پاک و ژێرنووسی فەرمی.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">بەستەرە خێراکان</h4>
+          <ul class="footer-links-list">
+            <li><a href="#home" class="footer-link" onclick="MerzeApp.navigate('home')">سەرەکی</a></li>
+            <li><a href="#search" class="footer-link" onclick="MerzeApp.navigate('search')">هەموو فیلمەکان</a></li>
+            <li><a href="#vip" class="footer-link" onclick="MerzeApp.navigate('vip')">بەشداریکردنی VIP</a></li>
+            <li><a href="#search" class="footer-link" onclick="MerzeApp.navigate('search')">سینەمای کوردی</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">یاسایی و مەرجەکان</h4>
+          <ul class="footer-links-list">
+            <li><a href="javascript:void(0)" class="footer-link" onclick="alert('تەواوی ناوەرۆکەکان بەپێی یاسای پەخشی یاسایی دابینکراون.')">یاسای بەکارهێنان</a></li>
+            <li><a href="javascript:void(0)" class="footer-link" onclick="alert('زانیاریی بەکارهێنەران بە تەواوی پارێزراوە لە داتابەیسی Firebase.')">پاراستنی زانیاری</a></li>
+            <li><a href="javascript:void(0)" class="footer-link" onclick="alert('بۆ پەیوەندی: support@merzemovies.com')">پەیوەندی لەگەڵ ئێمە</a></li>
+            <li><a href="javascript:void(0)" class="footer-link" onclick="alert('پشتیوانی کی کارت و ڕێگەکانی پارەدانی ئەلیکترۆنی.')">هاوکاری و یارمەتی</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">پەیوەندی و تۆڕە کۆمەڵایەتییەکان</h4>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">
+            لەگەڵمان بە بۆ نوێترین ڕاگەیەندراو و فیلمە نوێکان.
+          </p>
+          <div class="social-links">
+            <a href="javascript:void(0)" class="social-icon-btn" title="تێلیگرام">TG</a>
+            <a href="javascript:void(0)" class="social-icon-btn" title="ئینستاگرام">IG</a>
+            <a href="javascript:void(0)" class="social-icon-btn" title="فەیسبووک">FB</a>
+            <a href="javascript:void(0)" class="social-icon-btn" title="تیکتۆک">TT</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 مەرزە موڤیز (Merze Movies). هەموو مافەکانی پارێزراوە.</span>
+        <span style="color:var(--text-muted);">دیزاینکراوە بە خۆشەویستی بۆ سینەمادۆستانی کوردستان ❤️</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       MODAL OVERLAY & TOAST CONTAINER
+       ====================================================================== -->
+  <div id="modal-overlay" class="modal-overlay" onclick="if(event.target===this) MerzeApp.closeModal()">
+    <div id="modal-card" class="modal-card"></div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- ======================================================================
+       SCRIPTS & FIREBASE INTEGRATION
+       ====================================================================== -->
+  <!-- Google Firebase Compat SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+
+  <!-- Application Modules -->
+  <script src="js/firebase-config.js"></script>
+  <script src="js/seed-data.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
